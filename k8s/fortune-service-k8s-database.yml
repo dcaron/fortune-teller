@@ -1,0 +1,60 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fortune-service-database
+  labels:
+    app: fortune-service
+spec:
+#  type: LoadBalancer
+  ports:
+    - port: 3306
+      protocol: TCP
+#      targetPort: 3306
+#      nodePort: 31001
+  selector:
+    app: fortune-service
+    tier: database
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: fortune-service-database
+  labels:
+    app: fortune-service
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: fortune-service
+        tier: database
+    spec:
+      containers:
+        - image: mysql:5.6
+          name: fortune-service
+          env:
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: fortune-service-database
+                  key: database-user
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: fortune-service-database
+                  key: database-password
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: fortune-service-database
+                  key: database-password
+            - name: MYSQL_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: fortune-service-database
+                  key: database-name
+          ports:
+            - containerPort: 3306
+              name: db

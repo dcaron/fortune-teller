@@ -27,3 +27,5 @@ bin/
 *.ipr
 *.iws
 *.idea
+
+kubeconfig.yml

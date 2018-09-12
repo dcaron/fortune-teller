@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fortune-teller-ui
+  namespace: default
+  labels:
+    app: fortune-teller--ui
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      nodePort: 31003
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: fortune-teller-ui
+  sessionAffinity: None

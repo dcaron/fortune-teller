@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: fortune-teller-ui
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: fortune-teller-ui
+    spec:
+      containers:
+      -  name: fortune-teller-ui
+         image: dcaron/fortune-teller-ui:0.0.1-SNAPSHOT
+         ports:
+         - containerPort: 8080
+         env:
+          - name: fortune.fallbackFortune
+            valueFrom:
+              configMapKeyRef:
+                name: fortune-ui
+                key: fallbackFortune

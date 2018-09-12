@@ -32,16 +32,29 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>io.pivotal.spring.cloud</groupId>
-			<artifactId>spring-cloud-services-starter-config-client</artifactId>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>io.pivotal.spring.cloud</groupId>
-			<artifactId>spring-cloud-services-starter-service-registry</artifactId>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>io.pivotal.spring.cloud</groupId>
-			<artifactId>spring-cloud-services-starter-circuit-breaker</artifactId>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-kubernetes-ribbon</artifactId>
+            <version>0.3.0.RELEASE</version>
 		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>io.pivotal.spring.cloud</groupId>-->
+			<!--<artifactId>spring-cloud-services-starter-config-client</artifactId>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>io.pivotal.spring.cloud</groupId>-->
+			<!--<artifactId>spring-cloud-services-starter-service-registry</artifactId>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>io.pivotal.spring.cloud</groupId>-->
+			<!--<artifactId>spring-cloud-services-starter-circuit-breaker</artifactId>-->
+		<!--</dependency>-->
 	</dependencies>
 </project>

@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: fortune-service
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: fortune-service
+    spec:
+      containers:
+      -  name: fortune-service
+         image: dcaron/fortune-teller-fortune-service:0.0.1-SNAPSHOT
+         imagePullPolicy: Always
+         ports:
+           - containerPort: 8080
+         env:
+           - name: SPRING_PROFILES_ACTIVE
+             value: mysql
+           - name: SPRING_DATASOURCE_DRIVER-CLASS-NAME
+             value: com.mysql.jdbc.Driver
+           - name: spring.jpa.properties.hibernate.dialect
+             value: org.hibernate.dialect.MySQL5InnoDBDialect
+           - name: SPRING_DATASOURCE_USERNAME
+             valueFrom:
+               secretKeyRef:
+                 name: fortune-service-database
+                 key: database-user
+           - name: SPRING_DATASOURCE_PASSWORD
+             valueFrom:
+               secretKeyRef:
+                 name: fortune-service-database
+                 key: database-password
+           - name: SPRING_DATASOURCE_URL
+             value: jdbc:mysql://fortune-service-database/fortunes

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fortune-service-database
+data:
+  database-name: fortunes
+  spring.fallbackFortune:
