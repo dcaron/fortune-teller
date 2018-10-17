@@ -4,4 +4,4 @@ metadata:
   name: fortune-service-database
 data:
   database-name: fortunes
-  spring.fallbackFortune:
+  spring.fallbackFortune: fallback
