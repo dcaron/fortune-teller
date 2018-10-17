@@ -1,8 +1,16 @@
 spring:
+#  jpa:
+#    database: MYSQL
+#    hibernate:
+#      ddl-auto: create-drop
+#      database-platform: org.hibernate.dialect.MySQL55DBDialect
   jpa:
-    database: MYSQL
+    generate-ddl: true
+    show-sql: false
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: create-drop
+      use-new-id-generator-mappings: true
 
 ribbon:
   IsSecure: false
