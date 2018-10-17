@@ -52,6 +52,13 @@
 
 * Externalise config and deploy the fortune-service with a backing MySQL to k8s
 
+## k8s
+
+* log into pks and get credentials
+* log into the cluster with k8s
+* 
+
+
 
 ## Steps
 
