@@ -6,9 +6,6 @@ pks clusters
 pks get-credentials pipo
 kubectl cluster-info
 
+kubectl create clusterrolebinding admin --clusterrole=cluster-admin --serviceaccount=default:default
 
-
-kubectl apply -f pks/conf-database.yml
-kubectl apply -f pks/conf-secrets.yaml
-
-fortune-service-k8s-database.yml
+./create.sh
