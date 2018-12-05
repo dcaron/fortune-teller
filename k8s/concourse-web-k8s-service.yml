@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: concourse-entry
+  namespace: default
+  labels:
+    app: concourse-entry
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      nodePort: 31003
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: concourse-web
+  sessionAffinity: None
